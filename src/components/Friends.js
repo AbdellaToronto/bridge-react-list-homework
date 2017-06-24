@@ -6,7 +6,6 @@ export default class Friends extends Component {
 		return(
 			<div className="column">
 				<h1>List of Friends</h1>
-			  {/*<pre>{JSON.stringify(this.props.friendList,null,'  ')}</pre>*/}
 				<ul>
 					{this.props.friendList.map(friend => <li key={this.props.friendList.indexOf(friend)}>{friend.first} {friend.last} </li>)}
 				</ul>
