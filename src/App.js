@@ -22,7 +22,7 @@ const allFriends = Array.from({length: 20}, () => chance.friend());
 const bestFriends = allFriends.filter(friend => friend.isBestFriend);
 
 /* function: [friend] => [element object] */
-const listFriends = (friends) => friends.map(friend => <li className="friend">{`${friend.first} ${friend.last}`}</li>);
+const listFriends = (friends) => friends.map(friend => <li>{`${friend.first} ${friend.last}`}</li>);
 
 /* arrays of element objects */
 const listAllFriends = listFriends(allFriends);
