@@ -19,6 +19,18 @@ const bestFriends = allFriends.filter(friend => friend.isBestFriend);
 
 console.log(allFriends);
 
+const FriendList = (props) => {
+    return(
+     <ul>
+         {props.friends.map((friend, index) =>
+            <li key={index}>
+                {friend.first} {friend.last}
+            </li>
+         )}
+     </ul>
+    );
+};
+
 export default class App extends Component {
   render() {
     return (
@@ -26,28 +38,16 @@ export default class App extends Component {
           <div className="friendList">
               {/*Make a list of all your friends*/}
               <h1>My Friends</h1>
-              <ul>
-                  {allFriends.map((friend, index) =>
-                      <li key={index}>
-                          {friend.first} {friend.last}
-                      </li>
-                  )}
-              </ul>
+              <FriendList friends={allFriends} />
               {/*Make a list of just your best friends*/}
               <h1>My Best Friends</h1>
-              <ul>
-                  {bestFriends.map((friend, index) =>
-                      <li key={index}>
-                          {`${friend.first} ${friend.last}`}
-                      </li>
-                  )}
-              </ul>
+              <FriendList friends={bestFriends} />
               {/*Show the average age of your best friends*/}
               <h1>Average Age of My Best Friends</h1>
-              <ul>
+              <p>
                   {bestFriends.reduce((acc, friend) =>
                   acc + friend.age, 0)/allFriends.length} years old
-              </ul>
+              </p>
           </div>
       </div>
     );
