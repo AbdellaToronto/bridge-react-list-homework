@@ -22,23 +22,24 @@ const allFriends = Array.from({length: 20}, () => chance.friend());
 const bestFriends = allFriends.filter(friend => friend.isBestFriend);
 
 /* function: [friend] => [element object] */
-const listFriends = (friends) => friends.map(friend => <li>{`${friend.first} ${friend.last}`}</li>);
+const ListFriends = (props) => { 
+return (<div className="box"><h2>{props.heading}</h2><div className="list-wrapper"><ul>
+ { props.friends.map(friend => <li>{`${friend.first} ${friend.last}`}</li>) } 
+ </ul> </div></div> )}
 
-/* arrays of element objects */
-const listAllFriends = listFriends(allFriends);
-const listBestFriends = listFriends(bestFriends);
-const averageAgeBestFriends = (bestFriends.reduce((acc, curr, i, arr) => acc + curr.age / arr.length, 0)).toFixed(2);
+ const AverageAge = (props) => {
+   return (<div className="box"><h2>avg age</h2><div className="list-wrapper"><p>
+    {(props.friends.reduce((acc, curr, i, arr) => acc + curr.age / arr.length, 0)).toFixed(2)}</p></div></div> )
+ }
 
-/* array of headings with corresponding element object array */
-const listAndHeadings = [["all my friends",listAllFriends],["my best friends",listBestFriends],["avg age",averageAgeBestFriends]];
 
 export default class App extends Component {
   render() {
     return (
       <div className="App">
-        { listAndHeadings.map((list) => 
-          { return <div className="box"><h2>{list[0]}</h2><div className="list-wrapper"><ul>{list[1]}</ul></div></div> }
-        )}
+        <ListFriends friends={allFriends} heading="all friends" />
+        <ListFriends friends={bestFriends} heading="best friends" />
+        <AverageAge friends={bestFriends} />
       </div>
     );
   }
