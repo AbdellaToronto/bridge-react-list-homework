@@ -21,9 +21,9 @@ export default class App extends Component {
   render() {
     return (
       <div className="App">
-        <PeopleFilteredByProp array={allFriends} arrayTitle="all friends"/>
-        <PeopleFilteredByProp array={bestFriends}  arrayTitle="best friends"/>
-        <AverageOfANumInArray array={bestFriends} averagedProp="age" arrayTitle="average age of best friends"/>
+        <PeopleFilteredByProp inputArray={allFriends} arrayTitle="all friends"/>
+        <PeopleFilteredByProp inputArray={bestFriends}  arrayTitle="best friends"/>
+        <AverageOfANumInArray inputArray={bestFriends} averagedProp="age" arrayTitle="average age of best friends"/>
       </div>
     );
   }
@@ -33,8 +33,8 @@ const PeopleFilteredByProp = (props) => {
   return (
     <div>
       <h3>{props.arrayTitle}:</h3>
-      { props.array.map((person, i) =>
-        <p key={person.first + i}>{person.first} {person.last}, {person.age}</p>)
+      { props.inputArray.map((person, i) =>
+        <p key={person.first + i}> {person.first} {person.last}, {person.age}</p>)
       }
     </div>
   )
@@ -44,7 +44,7 @@ const AverageOfANumInArray = (props) => {
   return (
     <div>
       <h3>{props.arrayTitle}:</h3>
-      <p>{ props.array.reduce((acc, curr, i, array) => Math.round(acc + curr.age / array.length), 0) }</p>
+      <p>{ props.inputArray.reduce((acc, curr, i, array) => Math.round(acc + curr.age / array.length), 0) }</p>
     </div>
   );
 };
