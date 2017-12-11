@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
-import FriendsList from './FriendsList.js'
-import BestFriendsAverageAge from './BestFriendsAverageAge.js'
+import FriendsList from './FriendsList'
 
 import Chance from 'chance';
 
@@ -18,7 +17,19 @@ chance.mixin({
 
 const allFriends = Array.from({length: 20}, () => chance.friend());
 
-console.log(allFriends);
+// const ChildComponent = ({anotherArg}) => (
+//   <div>
+//     <h2>{anotherArg}</h2>
+//   </div>
+// );
+//
+// const ParentComponent = ({testArg, ...restProps}) => (
+//   <div>
+//     {console.log(`restProps: ${restProps}`)}
+//     <h2>My favorite argument: {testArg}</h2>
+//     <ChildComponent {...restProps}/>
+//   </div>
+// );
 
 export default class App extends Component {
   constructor(props) {
@@ -30,14 +41,7 @@ export default class App extends Component {
     return (
       <div className="App">
         <FriendsList friends={this.state.friendsArray}/>
-        <BestFriendsAverageAge friends={this.state.friendsArray}/>
-
-        {/*Make a list of all your friends*/}
-
-        {/*Make a list of just your best friends*/}
-
-        {/*Show the average age of your best friends*/}
-
+        {/*<ParentComponent testArg="foo" anotherArg="bar"/>*/}
       </div>
     );
   }
